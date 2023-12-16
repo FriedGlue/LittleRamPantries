@@ -1,0 +1,5 @@
+/src/server/node_modules/*
+/src/server/archive/*
+
+!*/.gitignore
+node_modules

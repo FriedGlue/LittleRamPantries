@@ -1,0 +1,25 @@
+version: '3'
+services:
+  client:
+    build:
+      context: ./client
+    ports:
+      - "5173:5173"
+
+  server:
+    build:
+      context: ./server
+    ports:
+      - "8080:8080"
+    depends_on:
+      - client
+
+  nginx:
+    image: nginx:latest
+    ports: 
+      - "80:80" 
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - client
+      - server
