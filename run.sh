@@ -37,3 +37,8 @@ sudo mv dist/ html/
 # Ensure nginx is running 
 sudo systemctl stop nginx
 sudo systemctl start nginx
+
+cd 
+cd ./LittleRamPantries/src/server
+node js/server.js
+
