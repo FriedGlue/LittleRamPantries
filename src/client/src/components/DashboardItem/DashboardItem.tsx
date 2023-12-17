@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Card from 'react-bootstrap/Card'
 import Button from "react-bootstrap/Button";
-import { api } from "../../../config.ts";
 
 import './DashboardItem.css'
 
@@ -43,9 +42,9 @@ function DashboardItem({ pantryJson }: { pantryJson: pantryJson}) {
   return (
       <Card>
         {showImage ? (
-            <Card.Img className="cardImage" src={api + "exteriors/" + pantryJson.pantry_exterior_url} alt={"An image of the LRP at " + pantryJson.facility} />
+            <Card.Img className="cardImage" src={"api/exteriors/" + pantryJson.pantry_exterior_url} alt={"An image of the LRP at " + pantryJson.facility} />
           ) : (
-            <Card.Img className="cardImage" src={api + "latest/" + pantryJson.latest_contents_url} alt="Image of food" />
+            <Card.Img className="cardImage" src={"api/latest/" + pantryJson.latest_contents_url} alt="Image of food" />
           )} 
         <Card.Body>
           <Card.Text className="info-container">
