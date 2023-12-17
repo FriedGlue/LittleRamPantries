@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Card from 'react-bootstrap/Card'
 import Button from "react-bootstrap/Button";
+import { api } from "../../../config.ts";
 
 import './DashboardItem.css'
 
@@ -20,11 +21,6 @@ type pantryJson = {
   time_last_opened: string;
   public_key: string
 };
-
-// static link to the server
- const api = "http://127.0.0.1:3000/";
-//const api= "http://localhost/api/";
-
 
 function DashboardItem({ pantryJson }: { pantryJson: pantryJson}) {
   const [showImage, setShowImage] = useState(false);
