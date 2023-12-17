@@ -22,7 +22,7 @@ type pantryJson = {
 };
 
 // static link to the server
- const api = "http://ec2-34-229-7-11.compute-1.amazonaws.com/api/";
+ const api = "http://127.0.0.1:3000/";
 //const api= "http://localhost/api/";
 
 

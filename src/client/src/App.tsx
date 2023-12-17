@@ -6,7 +6,7 @@ import DashboardItem from "./components/DashboardItem/DashboardItem"
 
 // import pantries from "./pantries.json";
 
-const baseUrl = "http://ec2-34-229-7-11.compute-1.amazonaws.com/api/";
+const baseUrl = "http://127.0.0.1:3000/";
 //const baseUrl = "http://localhost/api/";
 
 
