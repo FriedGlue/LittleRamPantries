@@ -1,0 +1,93 @@
+:root {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #535bf2;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#error-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 750px;
+    width: 100%;
+}
+
+/* index-hero.css */
+:root {
+  --navbar-height: 30px; /* Adjust this value based on your navbar's height */
+}
+
+.index-hero-container {
+  position: relative;
+  width: 100%;
+  padding-top: 35%;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.index-hero-text-block {
+  position: absolute;
+  height: auto;
+  /* Adjust top position based on navbar height */
+  top: calc(var(--navbar-height) + .5rem); /* Additional space below the navbar */
+  left: 25%;
+  transform: translateX(-50%);
+  background-color: rgba(250, 250, 250, 0.9);
+  color: black;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 40%;
+  width: calc(15% + 10vw);
+}
+
+.index-hero-text-block h1 {
+  font-size: calc(1.2rem + 1.5vw);
+}
+
+.index-hero-text-block p {
+  font-size: calc(1rem + 0.5vw);
+}
+
+/* Additional media queries as necessary */
+
+@media (max-width: 1200px) {
+  #indexFillerText {
+      display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .index-hero-text-block p,
+  .index-hero-text-block h3 {
+      display: none;
+  }
+
+  .index-hero-text-block {
+    left: 17%;
+    width: 30%;
+  }
+}

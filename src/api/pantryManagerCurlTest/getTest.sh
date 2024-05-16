@@ -1,0 +1,1 @@
+curl -X GET https://c4zm3v01r5.execute-api.us-east-1.amazonaws.com/prod/pantries/tufts/tufts

@@ -1,5 +1,8 @@
 /src/server/node_modules/*
 /src/server/archive/*
+/src/RasberryPi/.env
+src/api/.env
+src/frontend/client/.env.*
 
 !*/.gitignore
 node_modules

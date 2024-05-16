@@ -1,0 +1,128 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: |
+
+  Frontend Cloudformation Stack template. Modifed from -> 
+  ACFS3 - S3 Static site with CF and ACM
+  https://github.com/aws-samples/amazon-cloudfront-secure-static-site
+  (uksb-1qnk6ni7b) (version:v0.5)
+
+  run using the deploy_fullstack.sh script
+
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: Domain
+        Parameters:
+          - SubDomain
+          - DomainName
+
+Mappings:
+  Solution:
+    Constants:
+      Version: 'v0.11'
+
+Rules:
+  OnlyUsEast1:
+    Assertions:
+      - Assert:
+          Fn::Equals:
+            - !Ref AWS::Region
+            - us-east-1
+        AssertDescription: |
+          This template can only be deployed in the us-east-1 region.
+          This is because the ACM Certificate must be created in us-east-1
+
+Parameters:
+  SubDomain:
+    Description: The part of a website address before your DomainName - e.g. www or img
+    Type: String
+    Default: www
+    AllowedPattern: ^[^.]*$
+  DomainName:
+    Description: The part of a website address after your SubDomain - e.g. example.com
+    Type: String
+  HostedZoneId:
+    Description: HostedZoneId for the domain e.g. Z23ABC4XYZL05B
+    Type: String
+  CreateApex:
+    Description: Create an Apex Alias in CloudFront distribution - yes/no
+    Type: String
+    Default: 'no'
+    AllowedValues: ['yes', 'no']
+
+Resources:
+  CustomResourceStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: ./custom-resource.yaml
+      Parameters:
+        SubDomain: !Ref SubDomain
+        DomainName: !Ref DomainName
+      Tags:
+        - Key: Solution
+          Value: ACFS3
+
+  AcmCertificateStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: ./acm-certificate.yaml
+      Parameters:
+        SubDomain: !Ref SubDomain
+        DomainName: !Ref DomainName
+        CreateApex: !Ref CreateApex
+        HostedZoneId: !Ref HostedZoneId
+      Tags:
+        - Key: Solution
+          Value: ACFS3
+
+  CloudFrontStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: ./cloudfront-site.yaml
+      Parameters:
+        CertificateArn: !GetAtt AcmCertificateStack.Outputs.CertificateArn
+        DomainName: !Ref DomainName
+        SubDomain: !Ref SubDomain
+        CreateApex: !Ref CreateApex
+        S3BucketRoot: !GetAtt CustomResourceStack.Outputs.S3BucketRoot
+        S3BucketRootName: !GetAtt CustomResourceStack.Outputs.S3BucketRootName
+        S3BucketRootArn: !GetAtt CustomResourceStack.Outputs.S3BucketRootArn
+        S3BucketLogs: !GetAtt CustomResourceStack.Outputs.S3BucketLogs
+        S3BucketLogsName: !GetAtt CustomResourceStack.Outputs.S3BucketLogsName
+      Tags:
+        - Key: Solution
+          Value: ACFS3
+
+Outputs:
+  SolutionVersion:
+    Value: !FindInMap [Solution, Constants, Version]
+  S3BucketLogs:
+    Description: Logging bucket
+    Value: !GetAtt CustomResourceStack.Outputs.S3BucketLogs
+  S3BucketRoot:
+    Description: Website bucket
+    Value: !GetAtt CustomResourceStack.Outputs.S3BucketRoot
+  S3BucketLogsName:
+    Description: Logging bucket name
+    Value: !GetAtt CustomResourceStack.Outputs.S3BucketLogsName
+  S3BucketRootName:
+    Description: Website bucket name
+    Value: !GetAtt CustomResourceStack.Outputs.S3BucketRootName
+  CertificateArn:
+    Description: Issued certificate
+    Value: !GetAtt AcmCertificateStack.Outputs.CertificateArn
+  CFDistributionName:
+    Description: CloudFront distribution
+    Value: !GetAtt CloudFrontStack.Outputs.CloudFrontDistribution
+  CloudFrontDomainName:
+    Description: Website address
+    Value: !GetAtt CloudFrontStack.Outputs.CloudFrontDomainName
+  # S3AssetBucket: Description: Asset bucket
+  #   Value: !GetAtt CustomResourceStack.Outputs.S3AssetBucket
+  # S3AssetBucketName:
+  #   Description: Asset bucket name
+  #   Value: !GetAtt CustomResourceStack.Outputs.S3AssetBucketName
+  # S3AssetBucketArn:
+  #   Description: Asset bucket locator
+  #   Value: !GetAtt CustomResourceStack.Outputs.S3AssetBucketArn

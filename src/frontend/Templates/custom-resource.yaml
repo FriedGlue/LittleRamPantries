@@ -1,0 +1,122 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: ACFS3 - Cert Provider with DNS validation
+Transform: AWS::Serverless-2016-10-31
+
+Parameters:
+  DomainName:
+    Description: Apex domain
+    Type: String
+  SubDomain:
+    Description: Subdomain
+    Type: String
+
+Resources:
+  S3BucketLogs:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerPreferred
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      Tags:
+        - Key: Solution
+          Value: ACFS3
+
+  S3BucketRoot:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      LoggingConfiguration:
+        DestinationBucketName: !Ref 'S3BucketLogs'
+        LogFilePrefix: 'origin/'
+      Tags:
+        - Key: Solution
+          Value: ACFS3
+
+  S3AssetBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        IgnorePublicAcls: false
+        BlockPublicPolicy: false
+        RestrictPublicBuckets: false
+      CorsConfiguration:
+        CorsRules:
+          - AllowedHeaders: ["*"]
+            AllowedMethods: ["GET"]
+            AllowedOrigins: 
+            - !Sub "https://${SubDomain}.${DomainName}"
+            - !Sub "https://${DomainName}"
+            ExposedHeaders: 
+              - "x-amz-server-side-encryption"
+              - "x-amz-request-id"
+              - "x-amz-id-2"
+            MaxAge: 3000
+      Tags:
+        - Key: Solution
+          Value: ACFS3
+
+  S3AssetBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref S3AssetBucket 
+      PolicyDocument:
+        Id: PublicReadPolicy
+        Version: 2012-10-17
+        Statement:
+          - Sid: PublicReadForGetBucketObjects
+            Effect: Allow
+            Principal: '*'
+            Action: 's3:GetObject'
+            Resource: !Sub "arn:aws:s3:::${S3AssetBucket}/*"
+          - Sid: EnforceHTTPS
+            Effect: Deny
+            Principal: "*"
+            Action: "s3:*"
+            Resource: !Sub "arn:aws:s3:::${S3AssetBucket}/*"
+            Condition:
+              Bool:
+                aws:SecureTransport: "false"
+
+Outputs:
+  S3BucketRoot:
+    Description: Website bucket
+    Value: !Ref S3BucketRoot
+  S3BucketRootName:
+    Description: Website bucket name
+    Value: !GetAtt S3BucketRoot.DomainName
+  S3BucketRootArn:
+    Description: Website bucket locator
+    Value: !GetAtt S3BucketRoot.Arn
+  S3BucketLogs:
+    Description: Logging bucket
+    Value: !Ref S3BucketLogs
+  S3BucketLogsName:
+    Description: Logging bucket Name
+    Value: !GetAtt S3BucketLogs.DomainName
+  S3AssetBucket:
+    Description: Asset bucket
+    Value: !Ref S3AssetBucket
+  S3AssetBucketName:
+    Description: Asset bucket name
+    Value: !GetAtt S3AssetBucket.DomainName
+  S3AssetBucketArn:
+    Description: Asset bucket locator
+    Value: !GetAtt S3AssetBucket.Arn

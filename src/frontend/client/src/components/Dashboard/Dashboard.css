@@ -1,0 +1,24 @@
+.Dashboard {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Default: 1 column for mobile */
+    grid-auto-rows: auto;
+    column-gap: 0.5rem;
+    row-gap: 2rem;
+  }
+  
+  @media screen and (min-width: 600px) { 
+    .Dashboard {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+      row-gap: 4rem;
+    }
+  }
+  
+  @media screen and (min-width: 768px) {
+    .Dashboard {
+      grid-template-columns: repeat(3, 1fr); /* 3 columns for larger screens */
+      column-gap: 2.5rem;
+    }
+  }

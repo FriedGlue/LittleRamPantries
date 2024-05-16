@@ -1,0 +1,145 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31' 
+Description: SAM template for deploying Lambda functions and API Gateway.
+
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  MyApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: lrpGoBackend 
+      StageName: prod
+
+  ImageBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: lrp-go-asset-bucket
+
+  ImageAnalysisResultsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ImageAnalysisResultsTable
+      AttributeDefinitions:
+        - AttributeName: Location 
+          AttributeType: S
+        - AttributeName: Timestamp
+          AttributeType: N
+        - AttributeName: Unique
+          AttributeType: S
+      KeySchema:
+        - AttributeName: Location 
+          KeyType: HASH
+        - AttributeName: Timestamp
+          KeyType: RANGE
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      GlobalSecondaryIndexes:
+        - IndexName: UniqueIndex
+          KeySchema:
+            - AttributeName: Unique
+              KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+          ProvisionedThroughput:
+            ReadCapacityUnits: 1
+            WriteCapacityUnits: 1
+
+  ImageProcessorFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+    Properties:
+      PackageType: Zip
+      CodeUri: src/imageLogger/bootstrap
+      Handler: bootstrap
+      Runtime: provided.al2023
+      Architectures: [arm64]
+      Policies:
+        - AmazonS3ReadOnlyAccess
+        - AmazonRekognitionReadOnlyAccess
+        - AmazonDynamoDBFullAccess
+      Events:
+        S3ImageUpload:
+          Type: S3
+          Properties:
+            Bucket: !Ref ImageBucket
+            Events: s3:ObjectCreated:*
+
+  pantryManagerFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+    Properties:
+      PackageType: Zip
+      CodeUri: src/pantryManager/bootstrap
+      Handler: bootstrap
+      Runtime: provided.al2023
+      Architectures: [arm64]
+      Policies:
+        - AmazonDynamoDBFullAccess
+      Events:
+        GetEvent:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MyApi
+            Path: /pantries/{university}
+            Method: GET
+        GetByIDEvent:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MyApi
+            Path: /pantries/{university}/{sortKey}
+            Method: GET
+        CreateEvent:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MyApi
+            Path: /pantries/{university}/{sortKey}
+            Method: POST 
+        UpdateEvent:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MyApi
+            Path: /pantries/{university}/{sortKey}
+            Method: PUT 
+        DeleteEvent:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MyApi
+            Path: /pantries/{university}/{sortKey}
+            Method: DELETE 
+
+  HelloWorldFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+    Properties:
+      PackageType: Zip
+      CodeUri: src/helloWorld/bootstrap
+      Handler: bootstrap
+      Runtime: provided.al2023
+      Architectures: [arm64]
+      Events:
+        TestEvent:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MyApi
+            Path: /hello
+            Method: get
+
+Outputs:
+  APIEndpoint:
+    Description: "API Gateway endpoint URL"
+    Value: !Sub "https://${MyApi}.execute-api.${AWS::Region}.amazonaws.com/prod/"
+
+  ImageBucketName:
+    Description: "Name of the S3 bucket to upload images"
+    Value: !Ref ImageBucket
+
+  DynamoDBTableName:
+    Description: "DynamoDB table for storing image analysis results"
+    Value: !Ref ImageAnalysisResultsTable
