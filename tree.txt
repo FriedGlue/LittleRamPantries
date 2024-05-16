@@ -1,0 +1,110 @@
+.
+├── Documentation
+│   ├── Architecture
+│   │   ├── HLA.md
+│   │   ├── Image_AI_Service.md
+│   │   ├── Logging_Service.md
+│   │   ├── Pantry_Management_Service.md
+│   │   ├── Repository.md
+│   │   └── Wireframes
+│   │       └── Architecture .pdf
+│   ├── RaspberryPi.md
+│   ├── Readme.md
+│   └── Server.md
+├── README.md
+├── src
+│   ├── api
+│   │   ├── deploy.sh
+│   │   ├── go.mod
+│   │   ├── go.sum
+│   │   ├── pantryManagerCurlTest
+│   │   │   ├── deleteTest.sh
+│   │   │   ├── getTest.sh
+│   │   │   ├── postTest.sh
+│   │   │   └── putTest.sh
+│   │   ├── README.md
+│   │   ├── samconfig.toml
+│   │   ├── src
+│   │   │   ├── helloWorld
+│   │   │   │   ├── bootstrap
+│   │   │   │   └── main.go
+│   │   │   ├── imageLogger
+│   │   │   │   ├── bootstrap
+│   │   │   │   └── main.go
+│   │   │   └── pantryManager
+│   │   │       ├── bootstrap
+│   │   │       ├── main.go
+│   │   │       └── pantryManager.go
+│   │   └── template.yaml
+│   ├── frontend
+│   │   ├── client
+│   │   │   ├── package.json
+│   │   │   ├── package-lock.json
+│   │   │   ├── public
+│   │   │   │   └── LRPlogo.svg
+│   │   │   ├── README.md
+│   │   │   ├── src
+│   │   │   │   ├── assets
+│   │   │   │   │   ├── HeroBanner.png
+│   │   │   │   │   ├── LandingPage(2).png
+│   │   │   │   │   ├── LandingPage.png
+│   │   │   │   │   ├── ram-pantry.png
+│   │   │   │   │   └── Tufts.jpeg
+│   │   │   │   ├── components
+│   │   │   │   │   ├── AdminDashboard
+│   │   │   │   │   │   └── Histogram.tsx
+│   │   │   │   │   ├── Dashboard
+│   │   │   │   │   │   ├── Dashboard.css
+│   │   │   │   │   │   ├── DashboardItem
+│   │   │   │   │   │   │   ├── DashboardItem.css
+│   │   │   │   │   │   │   └── DashboardItem.tsx
+│   │   │   │   │   │   └── Dashboard.tsx
+│   │   │   │   │   ├── Footer
+│   │   │   │   │   │   └── Footer.tsx
+│   │   │   │   │   ├── Heros
+│   │   │   │   │   │   ├── AppHero.tsx
+│   │   │   │   │   │   └── Hero.css
+│   │   │   │   │   ├── LandingPage
+│   │   │   │   │   │   └── IndexButtons
+│   │   │   │   │   │       ├── IndexButton.css
+│   │   │   │   │   │       └── IndexButton.tsx
+│   │   │   │   │   └── Navbar
+│   │   │   │   │       ├── Navbar.css
+│   │   │   │   │       └── Navbar.tsx
+│   │   │   │   ├── hooks
+│   │   │   │   │   └── useFetchData.tsx
+│   │   │   │   ├── index.css
+│   │   │   │   ├── main.tsx
+│   │   │   │   ├── routes
+│   │   │   │   │   ├── Admin.tsx
+│   │   │   │   │   ├── App.tsx
+│   │   │   │   │   ├── ErrorPage.tsx
+│   │   │   │   │   └── Index.tsx
+│   │   │   │   ├── types
+│   │   │   │   │   └── types.tsx
+│   │   │   │   └── vite-env.d.ts
+│   │   │   ├── tsconfig.json
+│   │   │   ├── tsconfig.node.json
+│   │   │   └── vite.config.ts
+│   │   ├── deploy_client_resources.sh
+│   │   ├── sync_frontend.sh
+│   │   └── Templates
+│   │       ├── acm-certificate.yaml
+│   │       ├── cloudfront-site.yaml
+│   │       ├── custom-resource.yaml
+│   │       ├── main.yaml
+│   │       ├── README.md
+│   │       └── samconfig.toml
+│   └── RaspberryPi
+│       ├── good_example.png
+│       ├── ledtest.py
+│       ├── local
+│       │   ├── domain.txt
+│       │   ├── high-res
+│       │   └── low-res
+│       ├── put_me_in_init.d
+│       │   └── pibootscript3.sh
+│       ├── requirements.txt
+│       └── update_image.py
+└── tree.txt
+
