@@ -7,22 +7,36 @@ import (
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
+func addCORSHeaders(response events.APIGatewayProxyResponse) events.APIGatewayProxyResponse {
+	if response.Headers == nil {
+		response.Headers = map[string]string{}
+	}
+	response.Headers["Access-Control-Allow-Origin"] = "*"
+	response.Headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
+	response.Headers["Access-Control-Allow-Headers"] = "Content-Type"
+	return response
+}
+
 func handler(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+	var response events.APIGatewayProxyResponse
+
 	switch request.HTTPMethod {
 	case "GET":
-		return GetPantries(request), nil
+		response = GetPantries(request)
 	case "POST":
-		return CreatePantry(request), nil
+		response = CreatePantry(request)
 	case "PUT":
-		return UpdatePantry(request), nil
+		response = UpdatePantry(request)
 	case "DELETE":
-		return DeletePantry(request), nil
+		response = DeletePantry(request)
 	default:
-		return events.APIGatewayProxyResponse{
+		response = events.APIGatewayProxyResponse{
 			StatusCode: 405,
 			Body:       "Method Not Allowed",
-		}, nil
+		}
 	}
+
+	return addCORSHeaders(response), nil
 }
 
 func main() {

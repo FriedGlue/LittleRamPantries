@@ -1,0 +1,11 @@
+.admin-dashboard {
+  display: flex;
+}
+
+.date-filters {
+  margin-right: 20px;
+}
+
+.histogram-container {
+  flex-grow: 1;
+}

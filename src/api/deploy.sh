@@ -7,7 +7,7 @@ GOARCH="arm64"
 
 # Array of source directories where your main.go files are located.
 # Add the path to each of your Go application's entry points.
-SRC_DIRS=("./src/helloWorld" "./src/pantryManager" "./src/imageLogger")
+SRC_DIRS=("./src/helloWorld" "./src/pantryManager" "./src/imageLogger" "./src/adminDashboard")
 
 # Loop through each source directory
 for SRC_DIR in "${SRC_DIRS[@]}"; do

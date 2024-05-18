@@ -13,6 +13,7 @@
     "@fortawesome/fontawesome-free": "^6.4.2",
     "axios": "^1.6.1",
     "bootstrap": "^5.3.2",
+    "d3": "^7.9.0",
     "js-cookie": "^3.0.5",
     "mdb-react-ui-kit": "^6.3.0",
     "mdb-ui-kit": "^6.4.2",
@@ -22,6 +23,7 @@
     "react-router-dom": "^6.21.2"
   },
   "devDependencies": {
+    "@types/d3": "^7.4.3",
     "@types/js-cookie": "^3.0.6",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
