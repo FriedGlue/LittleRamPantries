@@ -7,15 +7,21 @@ function useFetchData<T>(url: string) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    axios.get(url)
-      .then(response => {
+    const fetchData = async () => {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const response = await axios.get(url);
         setData(response.data);
+      } catch (err) {
+        setError('Error loading data');
+      } finally {
         setLoading(false);
-      })
-      .catch(err => {
-        setError(err.message);
-        setLoading(false);
-      });
+      }
+    };
+
+    fetchData();
   }, [url]);
 
   return { data, loading, error };

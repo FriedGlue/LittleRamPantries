@@ -3,6 +3,7 @@
 /src/RasberryPi/.env
 src/api/.env
 src/frontend/client/.env.*
+src/api/src/test
 
 !*/.gitignore
 node_modules
