@@ -46,14 +46,6 @@ body {
   --navbar-height: 30px; /* Adjust this value based on your navbar's height */
 }
 
-.index-hero-container {
-  position: relative;
-  width: 100%;
-  padding-top: 35%;
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-
 .index-hero-text-block {
   position: absolute;
   height: auto;
@@ -78,12 +70,6 @@ body {
 }
 
 /* Additional media queries as necessary */
-
-@media (max-width: 1200px) {
-  #indexFillerText {
-      display: none;
-  }
-}
 
 @media (max-width: 800px) {
   .index-hero-text-block p,

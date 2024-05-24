@@ -5,7 +5,17 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'vcu-gold': '#f8b300',
+        'baby-blue': '#e3ebf7'
+      },
+      screens: { },
+      spacing: {
+        '17p': '17%',
+        '30p': '30%',
+      },
+    },
   },
   plugins: [],
 }

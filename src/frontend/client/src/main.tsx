@@ -5,7 +5,7 @@ import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import App from './routes/App';
-import Index from './routes/Index';
+import Index from './routes/LandingPage.tsx';
 import Admin from './routes/Admin';
 import NavbarScroll from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
