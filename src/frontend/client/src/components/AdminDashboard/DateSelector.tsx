@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 interface DateSelectorProps {
   onDateChange: (startDate: string, endDate: string) => void;
@@ -11,11 +11,14 @@ const DateSelector: React.FC<DateSelectorProps> = ({ onDateChange, defaultStartD
   const [endDate, setEndDate] = useState(defaultEndDate);
   const [error, setError] = useState('');
 
+  // Memoize the onDateChange callback to avoid unnecessary re-renders
+  const memoizedOnDateChange = useCallback(onDateChange, []);
+
   useEffect(() => {
     if (defaultStartDate && defaultEndDate) {
-      onDateChange(defaultStartDate, defaultEndDate);
+      memoizedOnDateChange(defaultStartDate, defaultEndDate);
     }
-  }, [defaultStartDate, defaultEndDate, onDateChange]);
+  }, [defaultStartDate, defaultEndDate, memoizedOnDateChange]);
 
   const validateDates = (newStartDate: string, newEndDate: string) => {
     if (newStartDate && newEndDate && newStartDate > newEndDate) {
@@ -30,7 +33,7 @@ const DateSelector: React.FC<DateSelectorProps> = ({ onDateChange, defaultStartD
     const newStartDate = e.target.value;
     setStartDate(newStartDate);
     if (validateDates(newStartDate, endDate)) {
-      onDateChange(newStartDate, endDate);
+      memoizedOnDateChange(newStartDate, endDate);
     }
   };
 
@@ -38,7 +41,7 @@ const DateSelector: React.FC<DateSelectorProps> = ({ onDateChange, defaultStartD
     const newEndDate = e.target.value;
     setEndDate(newEndDate);
     if (validateDates(startDate, newEndDate)) {
-      onDateChange(startDate, newEndDate);
+      memoizedOnDateChange(startDate, newEndDate);
     }
   };
 
