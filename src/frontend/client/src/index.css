@@ -15,23 +15,6 @@
   -webkit-text-size-adjust: 100%;
 }
 
-a {
-  font-weight: 500;
-  color: #535bf2;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
 :root {
   --navbar-height: 30px; /* Adjust this value based on your navbar's height */
 }
@@ -59,13 +42,7 @@ body {
   font-size: calc(1rem + 0.5vw);
 }
 
-/* Additional media queries as necessary */
-
 @media (max-width: 800px) {
-  .index-hero-text-block p,
-  .index-hero-text-block h3 {
-      display: none;
-  }
 
   .index-hero-text-block {
     left: 17%;
