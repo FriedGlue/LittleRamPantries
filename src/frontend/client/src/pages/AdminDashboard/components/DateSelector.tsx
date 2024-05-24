@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 interface DateSelectorProps {
   onDateChange: (startDate: string, endDate: string) => void;
@@ -6,13 +6,17 @@ interface DateSelectorProps {
   defaultEndDate: string;
 }
 
-const DateSelector: React.FC<DateSelectorProps> = ({ onDateChange, defaultStartDate, defaultEndDate }) => {
+const DateSelector: React.FC<DateSelectorProps> = ({
+  onDateChange,
+  defaultStartDate,
+  defaultEndDate,
+}) => {
   const [startDate, setStartDate] = useState(defaultStartDate);
   const [endDate, setEndDate] = useState(defaultEndDate);
   const [error, setError] = useState('');
 
   // Memoize the onDateChange callback to avoid unnecessary re-renders
-  const memoizedOnDateChange = useCallback(onDateChange, []);
+  const memoizedOnDateChange = useCallback(onDateChange, [onDateChange]);
 
   useEffect(() => {
     if (defaultStartDate && defaultEndDate) {
@@ -46,24 +50,16 @@ const DateSelector: React.FC<DateSelectorProps> = ({ onDateChange, defaultStartD
   };
 
   return (
-    <div className='date-filters'>
+    <div className="mr-5">
       <label>
         Start Date:
-        <input
-          type='date'
-          value={startDate}
-          onChange={handleStartDateChange}
-        />
+        <input type="date" value={startDate} onChange={handleStartDateChange} />
       </label>
       <label>
         End Date:
-        <input
-          type='date'
-          value={endDate}
-          onChange={handleEndDateChange}
-        />
+        <input type="date" value={endDate} onChange={handleEndDateChange} />
       </label>
-      {error && <div className='error'>{error}</div>}
+      {error && <div className="error">{error}</div>}
     </div>
   );
 };

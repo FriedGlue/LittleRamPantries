@@ -1,5 +1,5 @@
-import { useRouteError } from "react-router-dom";
-import { RouteError } from "../types/types";
+import { useRouteError } from 'react-router-dom';
+import { RouteError } from '../../types/types';
 
 export default function ErrorPage() {
   const error = useRouteError() as RouteError | null;
@@ -10,14 +10,20 @@ export default function ErrorPage() {
 
   if (error) {
     errorMessage = error.statusText || error.message || errorMessage;
-    statusCodeMessage = error.status? `Error Code: ${error.status}` : '';
+    statusCodeMessage = error.status ? `Error Code: ${error.status}` : '';
   }
 
   return (
-    <div id="error-page">
+    <div className="flex flex-col items-center justify-center min-h-[750px] w-full">
       <h1>Oops!</h1>
       <p>Sorry, an unexpected error has occurred.</p>
-      {<p><i>{statusCodeMessage}: {errorMessage}</i></p>}
+      {
+        <p>
+          <i>
+            {statusCodeMessage}: {errorMessage}
+          </i>
+        </p>
+      }
     </div>
   );
 }

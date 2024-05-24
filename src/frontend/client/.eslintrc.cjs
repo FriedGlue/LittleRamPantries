@@ -1,18 +1,22 @@
 module.exports = {
-  root: true,
-  env: { browser: true, es2020: true },
   extends: [
     'eslint:recommended',
+    'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:react-hooks/recommended',
+    'plugin:tailwindcss/recommended',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
-  parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh'],
+  plugins: ['@typescript-eslint', 'tailwindcss'],
   rules: {
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
+    'tailwindcss/no-custom-classname': 'off',
+    // Add other custom rules as needed
   },
-}
+  settings: {
+    tailwindcss: {
+      // These are the default values but feel free to customize
+      whitelist: [],
+      config: 'tailwind.config.js',
+      cssFiles: ['**/*.css', '**/*.scss'],
+      removeDuplicates: true,
+    },
+  },
+};

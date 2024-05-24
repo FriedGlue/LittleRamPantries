@@ -1,59 +1,18 @@
-:root {
-  font-family: Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #535bf2;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-#error-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 750px;
-    width: 100%;
-}
-
-/* index-hero.css */
 :root {
   --navbar-height: 30px; /* Adjust this value based on your navbar's height */
-}
-
-.index-hero-container {
-  position: relative;
-  width: 100%;
-  padding-top: 35%;
-  overflow: hidden;
-  margin-bottom: 20px;
 }
 
 .index-hero-text-block {
   position: absolute;
   height: auto;
   /* Adjust top position based on navbar height */
-  top: calc(var(--navbar-height) + .5rem); /* Additional space below the navbar */
+  top: calc(
+    var(--navbar-height) + 0.5rem
+  ); /* Additional space below the navbar */
   left: 25%;
   transform: translateX(-50%);
   background-color: rgba(250, 250, 250, 0.9);
@@ -72,22 +31,75 @@ body {
   font-size: calc(1rem + 0.5vw);
 }
 
-/* Additional media queries as necessary */
-
-@media (max-width: 1200px) {
-  #indexFillerText {
-      display: none;
-  }
-}
-
 @media (max-width: 800px) {
-  .index-hero-text-block p,
-  .index-hero-text-block h3 {
-      display: none;
-  }
-
   .index-hero-text-block {
     left: 17%;
     width: 30%;
   }
+}
+
+/* Favoriting star on the pantryDashboard */
+
+.favorite-star-button {
+  position: absolute;
+  top: 10px; /* Adjust if needed */
+  left: 10px; /* Adjust if needed */
+  background-color: white; /* Ensure visibility */
+  z-index: 1;
+  width: 50px; /* Increase size for visibility */
+  height: 50px; /* Increase size for visibility */
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+.favorite-star-button-border {
+  position: absolute;
+  top: 6px; /* Adjust if needed */
+  left: 6px; /* Adjust if needed */
+  z-index: 1;
+  width: 58px; /* Increase size for visibility */
+  height: 58px; /* Increase size for visibility */
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+  background-color: black;
+}
+
+@media (hover: hover) {
+  .favorite-star-button:hover {
+    background-color: #f8b300; /* Change background color on hover */
+    cursor: pointer; /* Change cursor to pointer to indicate clickable */
+    transform: scale(1.2); /* Slightly increase size for visual feedback */
+    transition:
+      transform 0.3s ease,
+      background-color 0.3s ease; /* Smooth transition for transform and background color */
+  }
+
+  /* Maintain the hover effect for the active state as well */
+  .favorite-star-button.favorite-active:hover {
+    background-color: #555555; /* Different color for active state on hover */
+  }
+}
+
+.favorite-star-button.favorite-active {
+  background-color: #f8b300;
 }

@@ -1,11 +1,9 @@
 import { useState } from 'react';
-import { SchoolConfig } from '../types/types.tsx';
-import Histogram from '../components/AdminDashboard/LineGraph.tsx';
-import DateSelector from '../components/AdminDashboard/DateSelector.tsx';
+import { SchoolConfig } from '../../types/types.tsx';
+import Histogram from './components/LineGraph.tsx';
+import DateSelector from './components/DateSelector.tsx';
 
-function Admin(
-  { schoolConfig }: { schoolConfig: SchoolConfig }
-) {
+function AdminDashboard({ schoolConfig }: { schoolConfig: SchoolConfig }) {
   // Calculate the default start and end dates
   const today = new Date();
   const oneWeekAgo = new Date(today);
@@ -27,13 +25,13 @@ function Admin(
   return (
     <>
       <h1> Hello {schoolConfig.short_name}</h1>
-      <div className='admin-dashboard'>
-        <DateSelector 
+      <div className="flex flex-col">
+        <DateSelector
           onDateChange={handleDateChange}
           defaultStartDate={defaultStartDate}
           defaultEndDate={defaultEndDate}
         />
-        <div className='histogram-container'>
+        <div className="flex-grow">
           <Histogram startDate={startDate} endDate={endDate} />
         </div>
       </div>
@@ -41,4 +39,4 @@ function Admin(
   );
 }
 
-export default Admin;
+export default AdminDashboard;
