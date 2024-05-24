@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 interface DateSelectorProps {
   onDateChange: (startDate: string, endDate: string) => void;
@@ -46,7 +46,7 @@ const DateSelector: React.FC<DateSelectorProps> = ({ onDateChange, defaultStartD
   };
 
   return (
-    <div className='date-filters'>
+    <div className='mr-5'>
       <label>
         Start Date:
         <input

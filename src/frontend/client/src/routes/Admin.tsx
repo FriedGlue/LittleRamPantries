@@ -27,13 +27,13 @@ function Admin(
   return (
     <>
       <h1> Hello {schoolConfig.short_name}</h1>
-      <div className='admin-dashboard'>
+      <div className='flex flex-col'>
         <DateSelector 
           onDateChange={handleDateChange}
           defaultStartDate={defaultStartDate}
           defaultEndDate={defaultEndDate}
         />
-        <div className='histogram-container'>
+        <div className='flex-grow'>
           <Histogram startDate={startDate} endDate={endDate} />
         </div>
       </div>
