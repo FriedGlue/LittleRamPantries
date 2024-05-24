@@ -12,7 +12,7 @@ const DateSelector: React.FC<DateSelectorProps> = ({ onDateChange, defaultStartD
   const [error, setError] = useState('');
 
   // Memoize the onDateChange callback to avoid unnecessary re-renders
-  const memoizedOnDateChange = useCallback(onDateChange, []);
+  const memoizedOnDateChange = useCallback(onDateChange, [onDateChange]);
 
   useEffect(() => {
     if (defaultStartDate && defaultEndDate) {

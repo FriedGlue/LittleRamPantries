@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import LRPLogo from '../../assets/ram-pantry.png';
-import { SchoolConfig } from '../../types/types';
+import LRPLogo from '../assets/ram-pantry.png';
+import { SchoolConfig } from '../types/types';
 import { useState } from 'react';
 
-function NavbarScroll({ schoolConfig }: { schoolConfig: SchoolConfig }) {
+function Navbar({ schoolConfig }: { schoolConfig: SchoolConfig }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavbar = () => {
@@ -57,4 +57,4 @@ function NavbarScroll({ schoolConfig }: { schoolConfig: SchoolConfig }) {
   );
 }
 
-export default NavbarScroll;
+export default Navbar;

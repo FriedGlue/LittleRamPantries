@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import DashboardItem from './DashboardItem/DashboardItem.tsx';
-import { PantryJson, SchoolConfig } from '../../types/types.tsx';
+import DashboardItem from './DashboardItem.tsx';
+import { PantryJson, SchoolConfig } from '../../../types/types.tsx';
 
 const Dashboard = (
   { schoolConfig, pantryData }:

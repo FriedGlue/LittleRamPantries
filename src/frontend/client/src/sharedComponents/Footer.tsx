@@ -1,5 +1,5 @@
 import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
-import { SchoolConfig } from '../../types/types';
+import { SchoolConfig } from '../types/types';
 
 export default function Footer(
   { schoolConfig }:

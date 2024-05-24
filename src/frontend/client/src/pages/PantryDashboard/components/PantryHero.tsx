@@ -1,6 +1,6 @@
-import { SchoolConfig } from "../../types/types";
+import { SchoolConfig } from "../../../types/types";
 
-function Hero({ schoolConfig }: { schoolConfig: SchoolConfig }) {
+function PantryHero({ schoolConfig }: { schoolConfig: SchoolConfig }) {
   return (
     <div className="relative w-full pt-[25%] lg:pt-[30%] md:pt-[40%] overflow-hidden">
       <img
@@ -28,4 +28,4 @@ function Hero({ schoolConfig }: { schoolConfig: SchoolConfig }) {
   );
 }
 
-export default Hero;
+export default PantryHero;

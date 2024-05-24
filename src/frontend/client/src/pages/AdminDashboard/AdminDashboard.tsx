@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { SchoolConfig } from '../types/types.tsx';
-import Histogram from '../components/AdminDashboard/LineGraph.tsx';
-import DateSelector from '../components/AdminDashboard/DateSelector.tsx';
+import { SchoolConfig } from '../../types/types.tsx';
+import Histogram from './components/LineGraph.tsx';
+import DateSelector from './components/DateSelector.tsx';
 
-function Admin(
+function AdminDashboard(
   { schoolConfig }: { schoolConfig: SchoolConfig }
 ) {
   // Calculate the default start and end dates
@@ -41,4 +41,4 @@ function Admin(
   );
 }
 
-export default Admin;
+export default AdminDashboard;

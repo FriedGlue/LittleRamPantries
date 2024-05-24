@@ -1,7 +1,7 @@
-import useFetchData from '../hooks/useFetchData';
-import Dashboard from '../components/Dashboard/Dashboard';
-import Hero from '../components/Heros/AppHero';
-import { SchoolConfig, PantryJson} from '../types/types';
+import useFetchData from '../../hooks/useFetchData';
+import Dashboard from './components/Dashboard';
+import PantryHero from './components/PantryHero';
+import { SchoolConfig, PantryJson} from '../../types/types';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -9,7 +9,7 @@ interface AppProps {
   schoolConfig: SchoolConfig;
 }
 
-function App({ schoolConfig }: AppProps) {
+function PantryDashboard({ schoolConfig }: AppProps) {
   const { data: pantryData, loading, error } = useFetchData<PantryJson[]>(`${apiUrl}/pantries/${schoolConfig.short_name}`);
 
   if (loading) return <p>Loading...</p>;
@@ -17,10 +17,10 @@ function App({ schoolConfig }: AppProps) {
 
   return (
     <>
-      <Hero schoolConfig={schoolConfig} />
+      <PantryHero schoolConfig={schoolConfig} />
       <Dashboard schoolConfig={schoolConfig} pantryData={pantryData || []} />
     </>
   );
 }
 
-export default App;
+export default PantryDashboard;

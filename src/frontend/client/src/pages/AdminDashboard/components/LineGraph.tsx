@@ -1,6 +1,6 @@
 import { EChart } from '@kbox-labs/react-echarts';
 import { format, parseISO } from 'date-fns'
-import useFetchData from '../../hooks/useFetchData';
+import useFetchData from '../../../hooks/useFetchData';
 
 interface LineGraphProps {
     startDate: string;

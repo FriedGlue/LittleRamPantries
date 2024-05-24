@@ -3,20 +3,19 @@ import * as ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import './index.css'
 
-import App from './routes/App';
-import Index from './routes/LandingPage.tsx';
-import Admin from './routes/Admin';
-import NavbarScroll from './components/Navbar/Navbar';
-import Footer from './components/Footer/Footer';
-import ErrorPage from './routes/ErrorPage';
-import { SchoolConfig } from './types/types.tsx';
+import PantryDashboard from './pages/PantryDashboard/PantryDashboard.tsx';
+import LandingPage from './pages/LandingPage/LandingPage.tsx';
+import AdminDashboard from './pages/AdminDashboard/AdminDashboard.tsx';
+import ErrorPage from './pages/ErrorPage/ErrorPage.tsx';
+import Navbar from './sharedComponents/Navbar.tsx';
+import Footer from './sharedComponents/Footer.tsx';
 
 import vcu_landing_banner from './assets/LandingPage(2).png'
 import vcu_dashboard_banner from './assets/HeroBanner.png'
 
-//import tufts_landing_banner from './assets/Tufts.jpeg'
-//import tufts_dashboard_banner from './assets/Tufts.jpeg'
+import { SchoolConfig } from './types/types.tsx';
 
 const sites : SchoolConfig[] = [
   {
@@ -54,8 +53,8 @@ for(let i = 0; i < sites.length; i++) {
     path: sites[i].path,
     element: (
       <React.Fragment>
-        <NavbarScroll schoolConfig={sites[i]}/>
-        <main><Index schoolConfig={sites[i]}/></main>
+        <Navbar schoolConfig={sites[i]}/>
+        <main><LandingPage schoolConfig={sites[i]}/></main>
         <Footer schoolConfig={sites[i]}/>
       </React.Fragment>
       ),
@@ -68,8 +67,8 @@ for(let i = 0; i < sites.length; i++) {
     element: (
       <div style={{ backgroundColor: sites[i].body_color }}>
       <React.Fragment>
-        <NavbarScroll schoolConfig={sites[i]}/>
-        <main><App schoolConfig={sites[i]}/></main>
+        <Navbar schoolConfig={sites[i]}/>
+        <main><PantryDashboard schoolConfig={sites[i]}/></main>
         <Footer schoolConfig={sites[i]}/>
       </React.Fragment>
       </div>
@@ -83,8 +82,8 @@ for(let i = 0; i < sites.length; i++) {
     element: (
       <div style={{ backgroundColor: sites[i].body_color }}>
       <React.Fragment>
-        <NavbarScroll schoolConfig={sites[i]}/>
-        <main><Admin schoolConfig={sites[i]}/></main>
+        <Navbar schoolConfig={sites[i]}/>
+        <main><AdminDashboard schoolConfig={sites[i]}/></main>
         <Footer schoolConfig={sites[i]}/>
       </React.Fragment>
       </div>

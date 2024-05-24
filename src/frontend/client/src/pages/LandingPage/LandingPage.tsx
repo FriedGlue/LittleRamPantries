@@ -1,9 +1,8 @@
-import IndexButtons from '../components/LandingPage/IndexButtons/IndexButton.tsx';
+import IndexButtons from './components/IndexButton.tsx';
 import Stack from 'react-bootstrap/Stack';
-import '../index.css';
-import { SchoolConfig } from '../types/types.tsx';
+import { SchoolConfig } from '../../types/types.tsx';
 
-function Index(
+function LandingPage(
   { schoolConfig }:
   { schoolConfig : SchoolConfig }
 ) {
@@ -28,4 +27,4 @@ function Index(
   );
 }
 
-export default Index;
+export default LandingPage;
