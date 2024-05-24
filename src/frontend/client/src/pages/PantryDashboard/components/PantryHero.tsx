@@ -1,4 +1,4 @@
-import { SchoolConfig } from "../../../types/types";
+import { SchoolConfig } from '../../../types/types';
 
 function PantryHero({ schoolConfig }: { schoolConfig: SchoolConfig }) {
   return (
@@ -17,7 +17,8 @@ function PantryHero({ schoolConfig }: { schoolConfig: SchoolConfig }) {
             {schoolConfig.blurb_1}&nbsp;{schoolConfig.blurb_2}
           </p>
           <p className="mb-[0.3rem] text-[20px] hidden xl:block xl:text-[24px]">
-            Spot a pantry you love? Simply click the star to favorite it, making it easier to find next time you're nearby.
+            Spot a pantry you love? Simply click the star to favorite it, making
+            it easier to find next time you're nearby.
           </p>
           <h3 className="mb-[0.3rem] text-[20px] sm:text-[1.25rem] md:text-[20px] xl:text-[24px]">
             Browse. Select. Eat. Repeat.

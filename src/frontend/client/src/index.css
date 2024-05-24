@@ -2,19 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root 
-{
-  font-family: Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
 :root {
   --navbar-height: 30px; /* Adjust this value based on your navbar's height */
 }
@@ -23,7 +10,9 @@
   position: absolute;
   height: auto;
   /* Adjust top position based on navbar height */
-  top: calc(var(--navbar-height) + .5rem); /* Additional space below the navbar */
+  top: calc(
+    var(--navbar-height) + 0.5rem
+  ); /* Additional space below the navbar */
   left: 25%;
   transform: translateX(-50%);
   background-color: rgba(250, 250, 250, 0.9);
@@ -43,14 +32,13 @@
 }
 
 @media (max-width: 800px) {
-
   .index-hero-text-block {
     left: 17%;
     width: 30%;
   }
 }
 
-/* Favoriting star on the pantryDashboard */ 
+/* Favoriting star on the pantryDashboard */
 
 .favorite-star-button {
   position: absolute;
@@ -60,7 +48,18 @@
   z-index: 1;
   width: 50px; /* Increase size for visibility */
   height: 50px; /* Increase size for visibility */
-  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
 }
 
 .favorite-star-button-border {
@@ -70,19 +69,31 @@
   z-index: 1;
   width: 58px; /* Increase size for visibility */
   height: 58px; /* Increase size for visibility */
-  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
   background-color: black;
 }
 
 @media (hover: hover) {
-
   .favorite-star-button:hover {
-    background-color: #F8B300;  /* Change background color on hover */
+    background-color: #f8b300; /* Change background color on hover */
     cursor: pointer; /* Change cursor to pointer to indicate clickable */
     transform: scale(1.2); /* Slightly increase size for visual feedback */
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition for transform and background color */
+    transition:
+      transform 0.3s ease,
+      background-color 0.3s ease; /* Smooth transition for transform and background color */
   }
-  
+
   /* Maintain the hover effect for the active state as well */
   .favorite-star-button.favorite-active:hover {
     background-color: #555555; /* Different color for active state on hover */
@@ -90,5 +101,5 @@
 }
 
 .favorite-star-button.favorite-active {
-  background-color: #F8B300;
+  background-color: #f8b300;
 }

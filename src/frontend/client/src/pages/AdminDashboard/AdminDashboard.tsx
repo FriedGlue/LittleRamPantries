@@ -3,9 +3,7 @@ import { SchoolConfig } from '../../types/types.tsx';
 import Histogram from './components/LineGraph.tsx';
 import DateSelector from './components/DateSelector.tsx';
 
-function AdminDashboard(
-  { schoolConfig }: { schoolConfig: SchoolConfig }
-) {
+function AdminDashboard({ schoolConfig }: { schoolConfig: SchoolConfig }) {
   // Calculate the default start and end dates
   const today = new Date();
   const oneWeekAgo = new Date(today);
@@ -27,13 +25,13 @@ function AdminDashboard(
   return (
     <>
       <h1> Hello {schoolConfig.short_name}</h1>
-      <div className='flex flex-col'>
-        <DateSelector 
+      <div className="flex flex-col">
+        <DateSelector
           onDateChange={handleDateChange}
           defaultStartDate={defaultStartDate}
           defaultEndDate={defaultEndDate}
         />
-        <div className='flex-grow'>
+        <div className="flex-grow">
           <Histogram startDate={startDate} endDate={endDate} />
         </div>
       </div>

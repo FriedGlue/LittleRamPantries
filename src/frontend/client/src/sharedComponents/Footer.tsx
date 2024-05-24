@@ -1,6 +1,10 @@
 import { SchoolConfig } from '../types/types';
 
-export default function Footer({ schoolConfig }: { schoolConfig: SchoolConfig }) {
+export default function Footer({
+  schoolConfig,
+}: {
+  schoolConfig: SchoolConfig;
+}) {
   return (
     <div style={{ backgroundColor: schoolConfig.footer_color }}>
       <footer className="text-center text-lg-start text-muted">
@@ -13,7 +17,8 @@ export default function Footer({ schoolConfig }: { schoolConfig: SchoolConfig })
                   Little Ram Pantries
                 </h6>
                 <p>
-                  The students of Multi-24-620 would like to thank you for visiting our capstone project!
+                  The students of Multi-24-620 would like to thank you for
+                  visiting our capstone project!
                 </p>
               </div>
 
@@ -25,12 +30,18 @@ export default function Footer({ schoolConfig }: { schoolConfig: SchoolConfig })
                   </a>
                 </p>
                 <p>
-                  <a href="https://news.vcu.edu/article/2021/10/little-ram-pantries-will-provide-emergency-food-assistance-to-vcu-students" className="text-reset">
+                  <a
+                    href="https://news.vcu.edu/article/2021/10/little-ram-pantries-will-provide-emergency-food-assistance-to-vcu-students"
+                    className="text-reset"
+                  >
                     Learn Our Story
                   </a>
                 </p>
                 <p>
-                  <a href="https://news.vcu.edu/article/2023/10/marking-its-first-decade-ram-pantry-continues-serving-food-insecure-students-at-vcu" className="text-reset">
+                  <a
+                    href="https://news.vcu.edu/article/2023/10/marking-its-first-decade-ram-pantry-continues-serving-food-insecure-students-at-vcu"
+                    className="text-reset"
+                  >
                     See The Research
                   </a>
                 </p>
@@ -55,7 +66,10 @@ export default function Footer({ schoolConfig }: { schoolConfig: SchoolConfig })
           </div>
         </section>
 
-        <div className="text-center p-4" style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
+        <div
+          className="text-center p-4"
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}
+        >
           © 2023 Copyright: Little Ram Pantries
         </div>
       </footer>

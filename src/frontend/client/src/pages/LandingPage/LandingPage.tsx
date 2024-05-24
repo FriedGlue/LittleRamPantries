@@ -19,7 +19,10 @@ function LandingPage({ schoolConfig }: { schoolConfig: SchoolConfig }) {
             <p className="hidden xl:block mb-[0.3rem] text-[20px] xl:text-[24px]">
               {schoolConfig.blurb_1}
             </p>
-            <p className="hidden lg:block mb-[0.3rem] text-[20px] xl:text-[24px]" id="indexFillerText">
+            <p
+              className="hidden lg:block mb-[0.3rem] text-[20px] xl:text-[24px]"
+              id="indexFillerText"
+            >
               {schoolConfig.blurb_2}
             </p>
             <h3 className="mb-[0.3rem] text-[20px] sm:text-[1.25rem] md:text-[20px] xl:text-[24px]">

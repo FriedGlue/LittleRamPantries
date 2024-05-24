@@ -6,7 +6,11 @@ interface DateSelectorProps {
   defaultEndDate: string;
 }
 
-const DateSelector: React.FC<DateSelectorProps> = ({ onDateChange, defaultStartDate, defaultEndDate }) => {
+const DateSelector: React.FC<DateSelectorProps> = ({
+  onDateChange,
+  defaultStartDate,
+  defaultEndDate,
+}) => {
   const [startDate, setStartDate] = useState(defaultStartDate);
   const [endDate, setEndDate] = useState(defaultEndDate);
   const [error, setError] = useState('');
@@ -46,24 +50,16 @@ const DateSelector: React.FC<DateSelectorProps> = ({ onDateChange, defaultStartD
   };
 
   return (
-    <div className='mr-5'>
+    <div className="mr-5">
       <label>
         Start Date:
-        <input
-          type='date'
-          value={startDate}
-          onChange={handleStartDateChange}
-        />
+        <input type="date" value={startDate} onChange={handleStartDateChange} />
       </label>
       <label>
         End Date:
-        <input
-          type='date'
-          value={endDate}
-          onChange={handleEndDateChange}
-        />
+        <input type="date" value={endDate} onChange={handleEndDateChange} />
       </label>
-      {error && <div className='error'>{error}</div>}
+      {error && <div className="error">{error}</div>}
     </div>
   );
 };
