@@ -32,16 +32,6 @@ body {
   min-height: 100vh;
 }
 
-#error-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 750px;
-    width: 100%;
-}
-
-/* index-hero.css */
 :root {
   --navbar-height: 30px; /* Adjust this value based on your navbar's height */
 }
