@@ -13,12 +13,12 @@ function Index(
       {/* Hero Image and Text */}
       <div className="absolute top-0 left-0 w-full h-full object-cover">
         <img src={schoolConfig.banners.landing_banner} alt="landing page banner" className="absolute top-0 left-0 w-full h-full object-cover" />
-        <div className="index-hero-text-block md:block:left-17p md:block:w-30p">
+        <div className="index-hero-text-block">
           <Stack gap={3}>
             <h1>Little Ram Pantries</h1>
             <p className='hidden lg:block'>{schoolConfig.blurb_1}</p>
-            <p className='hidden md:block' id="indexFillerText"> {schoolConfig.blurb_2} </p>
-            <h3>Browse. Select. Eat. Repeat.</h3>
+            <p className='hidden xl:block' id="indexFillerText"> {schoolConfig.blurb_2} </p>
+            <h3 className='hidden sm'>Browse. Select. Eat. Repeat.</h3>
           </Stack>
         </div>
       </div>
