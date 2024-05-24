@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { PantryJson, SchoolConfig } from '../../../types/types.tsx';
-import './DashboardItem.css';
 
 const assetUrl = import.meta.env.VITE_ASSET_URL;
 
