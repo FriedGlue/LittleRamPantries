@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import DashboardItem from './DashboardItem/DashboardItem.tsx';
 import { PantryJson, SchoolConfig } from '../../types/types.tsx';
-import './Dashboard.css';
 
 const Dashboard = (
   { schoolConfig, pantryData }:

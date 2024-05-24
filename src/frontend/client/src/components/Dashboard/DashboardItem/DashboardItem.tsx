@@ -1,6 +1,4 @@
-import React from 'react';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+import { useState } from 'react';
 import { PantryJson, SchoolConfig } from '../../../types/types.tsx';
 import './DashboardItem.css';
 
@@ -10,7 +8,7 @@ function DashboardItem(
   { pantryJson, onFavorite, isFavorited }:
   { schoolConfig: SchoolConfig, pantryJson: PantryJson, onFavorite: (publicKey: string) => void, isFavorited: boolean } ) {
 
-  const [showImage, setShowImage] = React.useState(false);
+  const [showImage, setShowImage] = useState(false);
   const buttonText = showImage ?  "See what's inside" : "See more info";
 
   const handleButtonClick = () => {
@@ -43,23 +41,29 @@ function DashboardItem(
   );
 
   return (
-    <Card className="dashboard-item-card">
-      <Card.Img src={imageSource} alt={imageAlt}/>
-      <div className='favorite-star-button-border'></div>
-      <Button
-        onClick={handleFavoriteClick} 
-        variant="light"
-        className={`favorite-star-button ${isFavorited ? 'favorite-active' : ''}`}
-      />
-      <Card.Body>
-        <Card.Text className="info-container">
+    <div className="border-2 border-black rounded-lg overflow-hidden relative">
+      <img className="relative z-0 border-b-2 border-black rounded-t-lg" src={imageSource} alt={imageAlt}/>
+      <div className="absolute top-2 left-2 z-10">
+        <div className="favorite-star-button-border"></div>
+        <button
+          onClick={handleFavoriteClick}
+          className={`favorite-star-button ${isFavorited ? 'favorite-active' : ''}`}
+        />
+      </div>
+      <div className="relative z-10 p-4 bg-white">
+        <div className="text-left bg-white">
           {infoList}
-        </Card.Text>
-      </Card.Body>
-      <Card.Footer className="d-grid">
-        <Button onClick={handleButtonClick} variant="primary" className="btn-custom" size="lg">{buttonText}</Button>
-      </Card.Footer>
-    </Card>
+        </div>
+      </div>
+      <div className="p-0">
+        <button 
+          onClick={handleButtonClick} 
+          className="bg-yellow-500 rounded-b-lg text-gray-800 w-full text-xl py-2 transition-colors duration-300 ease-in-out hover:bg-gray-700 hover:text-white"
+        >
+          {buttonText}
+        </button>
+      </div>
+    </div>
   );
 }
 
