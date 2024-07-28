@@ -22,6 +22,7 @@ type Pantry struct {
 	PantryExteriorURL *string `json:"pantry_exterior_url,omitempty"`
 	Name              *string `json:"name,omitempty"`
 	Floor             *string `json:"floor,omitempty"`
+	Hours             *string `json:"hours,omitempty"`
 }
 
 // PantryUpdate is Used for PUT request
@@ -33,6 +34,7 @@ type PantryUpdate struct {
 	PantryExteriorURL *string `json:"pantry_exterior_url,omitempty"`
 	Name              *string `json:"name,omitempty"`
 	Floor             *string `json:"floor,omitempty"`
+	Hours             *string `json:"hours,omitempty"`
 }
 
 // DynamoDBClient initializes a DynamoDB client
