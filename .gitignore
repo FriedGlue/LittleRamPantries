@@ -1,10 +1,10 @@
 /src/server/node_modules/*
 /src/server/archive/*
-/src/RasberryPi/.env
-/src/RasberryPi/venv
-src/api/.env
-src/frontend/client/.env.*
-src/api/src/test
+/src/raspberryPi/.env
+/src/raspberryPi/venv
+/src/api/.env
+/src/frontend/client/.env.*
+/src/api/src/test
 
 !*/.gitignore
 node_modules
