@@ -28,9 +28,10 @@ export type SchoolConfig = {
     phone: string;
   };
 
-  banners: {
+  assets: {
     landing_banner: string;
     dashboard_banner: string;
+    transparentPantry: string;
   };
 
   body_color: string;

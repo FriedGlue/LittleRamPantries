@@ -14,6 +14,7 @@ import Footer from './sharedComponents/Footer.tsx';
 
 import vcu_landing_banner from './assets/LandingPage(2).png';
 import vcu_dashboard_banner from './assets/HeroBanner.png';
+import vcu_transparent_pantry from './assets/vcu_transparentPantry.png';
 
 import { SchoolConfig } from './types/types.tsx';
 
@@ -29,9 +30,10 @@ const sites: SchoolConfig[] = [
       phone: '+1 (804)-828-4514',
     },
 
-    banners: {
+    assets: {
       landing_banner: vcu_landing_banner,
       dashboard_banner: vcu_dashboard_banner,
+      transparentPantry: vcu_transparent_pantry,
     },
 
     body_color: 'white',
@@ -53,7 +55,7 @@ for (let i = 0; i < sites.length; i++) {
     element: (
       <React.Fragment>
         <Navbar schoolConfig={sites[i]} />
-        <main>
+        <main className="bg-[#F0DAAB]">
           <LandingPage schoolConfig={sites[i]} />
         </main>
         <Footer schoolConfig={sites[i]} />
