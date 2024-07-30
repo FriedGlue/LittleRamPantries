@@ -3,7 +3,10 @@ import InfoSection from './components/InfoSection.tsx';
 import TestimonialGrid from './components/Testimonial.tsx';
 import { SchoolConfig } from '../../types/types.tsx';
 
-import joshThumbnail from '../../assets/pfp.jpg'
+import avatarOne from '../../assets/avatarOne.png'
+import avatarTwo from '../../assets/avatarTwo.png'
+import avatarThree from '../../assets/avatarThree.png'
+import avatarFour from '../../assets/avatarFour.png'
 import percentVisual from '../../assets/35percentVisual.png'
 
 import learningGardenLogo from '../../assets/learningGardenLogo.png'
@@ -13,35 +16,13 @@ import sousCasaLogo from '../../assets/SousCasaLogo.png'
 import vcuDineLogo from '../../assets/vcuDineLogo.png'
 
 function LandingPage({ schoolConfig }: { schoolConfig: SchoolConfig }) {
+
   const logos = [
     { src: vcuDineLogo, alt: 'VCU Dine Logo' },
     { src: feedMoreLogo, alt: 'Feed More Logo' },
     { src: paceCenterLogo, alt: 'Pace Center Logo' },
     { src: sousCasaLogo, alt: 'Sous Casa Logo' },
     { src: learningGardenLogo, alt: 'Learning Garden Logo' },
-  ];
-
-  const testimonials = [
-    {
-      thumbnail: joshThumbnail,
-      text: "I'm super ADHD, so having the option to grab a quick snack between class is perfect because I usually forget mine.",
-      author: '-Joshua Hayes, 2024 Alumni, Computer Science',
-    },
-    {
-      thumbnail: joshThumbnail,
-      text: "I'm super ADHD, so having the option to grab a quick snack between class is perfect because I usually forget mine.",
-      author: '-Joshua Hayes, 2024 Alumni, Computer Science',
-    },
-    {
-      thumbnail: joshThumbnail,
-      text: "I'm super ADHD, so having the option to grab a quick snack between class is perfect because I usually forget mine.",
-      author: '-Joshua Hayes, 2024 Alumni, Computer Science',
-    },
-    {
-      thumbnail: joshThumbnail,
-      text: "I'm super ADHD, so having the option to grab a quick snack between class is perfect because I usually forget mine.",
-      author: '-Joshua Hayes, 2024 Alumni, Computer Science',
-    },
   ];
 
     const infoSections: {
@@ -95,7 +76,30 @@ function LandingPage({ schoolConfig }: { schoolConfig: SchoolConfig }) {
         titlePosition: "right",
       },
     ];
-    
+
+  const testimonials = [
+    {
+      thumbnail: avatarTwo,
+      text: "I'm super ADHD, so having the option to grab a quick snack between class is perfect because I usually forget mine.",
+      author: '-Owen Rapp, 2024 Alumni, Biology',
+    },
+    {
+      thumbnail: avatarOne,
+      "text": "Balancing my coursework and a tight budget was stressful. The Little Ram Pantries helped me get through tough times without worrying about food. It's a fantastic initiative!",
+      "author": "-Sophia Nguyen, Senior, Business Administration"
+    },
+    {
+      thumbnail: avatarThree,
+      "text": "Little Ram Pantries have been a lifesaver for me. Between my part-time job and classes, I barely have time to shop for groceries. The convenient locations make it easy to grab what I need quickly.",
+      "author": "-Garnet Rose, Senior, Electrical Engineering"
+    },
+    {
+      thumbnail: avatarFour,
+      "text": "I appreciate the variety of snacks and hygiene products available in the pantries. It’s not just about food; it’s about feeling supported in all aspects of student life.",
+      "author": "-Emily Carter, Sophomore, Nursing"
+    }
+
+  ];
   
   return (
     <>
@@ -138,30 +142,30 @@ function LandingPage({ schoolConfig }: { schoolConfig: SchoolConfig }) {
       {/* Live Usage Number */}
       <div className="flex flex-col items-center">
         <div className="flex mt-36 justify-center text-center">
-          <h3 className="font-bold text-3xl hidden lg:block">Thousands of students are already using Little Ram Pantries</h3>
-          <h3 className="font-bold text-3xl block lg:hidden">
+          <h3 className="font-bold text-6xl drop-shadow-2xl hidden lg:block">Thousands of students are already using Little Ram Pantries</h3>
+          <h3 className="font-bold text-4xl block lg:hidden">
             Thousands of students are already
             <br />
             using Little Ram Pantries
           </h3>
         </div>
-        <div className="flex flex-col md:flex-row gap-8 justify-center m-16">
-          <div className="flex flex-col items-center bg-slate-500 m-8 mt-2 p-8 rounded-md min-w-60">
-            <h3 className="font-bold text-3xl mb-4">80</h3>
-            <h4 className="font-bold text-2xl">This Semester</h4>
+        <div className="flex flex-col lg:flex-row gap-8 justify-center mt-36">
+          <div className="flex flex-col items-center bg-gray-500 m-8 mt-2 p-8 rounded-md min-w-80">
+            <h3 className="font-bold text-4xl text-white mb-4">768</h3>
+            <h4 className="font-bold text-3xl text-white">This Semester</h4>
           </div>
-          <div className="flex flex-col items-center bg-slate-500 m-8 mt-2 p-8 rounded-md min-w-60">
-            <h3 className="font-bold text-3xl mb-4">80</h3>
-            <h4 className="font-bold text-2xl">This Year</h4>
+          <div className="flex flex-col items-center bg-gray-500 m-8 mt-2 p-8 rounded-md min-w-80">
+            <h3 className="font-bold text-3xl text-white mb-4">1,743</h3>
+            <h4 className="font-bold text-2xl text-white">This Year</h4>
           </div>
-          <div className="flex flex-col items-center bg-slate-500 m-8 mt-2 p-8 rounded-md min-w-60">
-            <h3 className="font-bold text-3xl mb-4">80</h3>
-            <h4 className="font-bold text-2xl">Since 2020</h4>
+          <div className="flex flex-col items-center bg-gray-500 m-8 mt-2 p-8 rounded-md min-w-80">
+            <h3 className="font-bold text-3xl mb-4 text-white">5,319</h3>
+            <h4 className="font-bold text-2xl text-white">Since 2020</h4>
           </div>
         </div>
       </div>
 
-      <div className='mt-20'>
+      <div className='mt-36'>
         <IndexButtons />
       </div>
 
@@ -208,7 +212,7 @@ function LandingPage({ schoolConfig }: { schoolConfig: SchoolConfig }) {
           alt='35% of 100 visualized'
         />
         <p className='text-lg max-w-prose'>
-          According to our research, over 35% of the VCU student body faces some form of food insecurity, highlighting a significant and often overlooked issue within our academic community. This staggering statistic underscores the critical need for accessible food resources on campus. Food insecurity can lead to detrimental effects on students' academic performance, mental health, and overall well-being. By addressing this issue head-on, initiatives like the Little Ram Pantries not only provide essential nourishment but also support students in achieving their educational goals and maintaining a healthier, more balanced lifestyle. (4, 5)
+          According to our research, over 35% of the VCU student body faces some form of food insecurity, highlighting a significant and often overlooked issue within our academic community. This staggering statistic shows the critical need for accessible food resources on campus. Food insecurity can lead to detrimental effects on students' academic performance, mental health, and overall well-being. By addressing this issue head-on, initiatives like the Little Ram Pantries not only provide essential nourishment but also support students in achieving their educational goals and maintaining a healthier, more balanced lifestyle. (4, 5)
         </p>
       </div>
 
@@ -225,12 +229,15 @@ function LandingPage({ schoolConfig }: { schoolConfig: SchoolConfig }) {
               key={index}
               src={logo.src}
               alt={logo.alt}
-              className="h-40 w-40 object-contain"
+              className="min-h-48 w-48 object-contain"
             />
           ))}
         </div>
       </div>
 
+      <div className='mt-36 pb-36'>
+        <IndexButtons />
+      </div>
   </>
   );
 }

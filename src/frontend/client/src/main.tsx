@@ -54,7 +54,7 @@ for (let i = 0; i < sites.length; i++) {
     path: sites[i].path,
     element: (
       <React.Fragment>
-        <Navbar schoolConfig={sites[i]} />
+        <Navbar />
         <main className="bg-[#F0DAAB]">
           <LandingPage schoolConfig={sites[i]} />
         </main>
@@ -70,7 +70,7 @@ for (let i = 0; i < sites.length; i++) {
     element: (
       <div style={{ backgroundColor: sites[i].body_color }}>
         <React.Fragment>
-          <Navbar schoolConfig={sites[i]} />
+          <Navbar />
           <main>
             <PantryDashboard schoolConfig={sites[i]} />
           </main>
@@ -87,7 +87,7 @@ for (let i = 0; i < sites.length; i++) {
     element: (
       <div style={{ backgroundColor: sites[i].body_color }}>
         <React.Fragment>
-          <Navbar schoolConfig={sites[i]} />
+          <Navbar />
           <main>
             <AdminDashboard schoolConfig={sites[i]} />
           </main>
