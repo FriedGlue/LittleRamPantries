@@ -4,7 +4,7 @@ function PantryHero({ schoolConfig }: { schoolConfig: SchoolConfig }) {
   return (
     <div className="relative w-full pt-[25%] lg:pt-[30%] md:pt-[40%] overflow-hidden">
       <img
-        src={schoolConfig.banners.dashboard_banner}
+        src={schoolConfig.assets.dashboard_banner}
         alt="Background"
         className="absolute top-0 left-0 w-full h-full object-cover"
       />

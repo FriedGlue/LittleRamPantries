@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 import LRPLogo from '../assets/ram-pantry.png';
-import { SchoolConfig } from '../types/types';
 import { useState } from 'react';
 
-function Navbar({ schoolConfig }: { schoolConfig: SchoolConfig }) {
+function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavbar = () => {
