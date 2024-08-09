@@ -38,7 +38,7 @@ function LandingPage({ schoolConfig }: { schoolConfig: SchoolConfig }) {
           "Access free food easily between classes, reducing hunger stress.",
           "Convenient snacks available for quick grabs while studying.",
           "Combat food insecurity with accessible pantry locations.",
-          "College students are one of the most at-risk for food insecurity. (1)",
+          "College students are one of the most at-risk for food insecurity.",
         ],
         titlePosition: "left",
       },
@@ -65,13 +65,13 @@ function LandingPage({ schoolConfig }: { schoolConfig: SchoolConfig }) {
         titlePosition: "right",
       },
       {
-        title: "What is food insecurity?",
-        subtitle: "Understanding the challenges of accessing nutritious food",
+        title: "What other resources does VCU have?",
+        subtitle: "Asking for help can feel scary, we make it easy",
         texts: [
-          "Food insecurity means not having reliable access to enough nutritious food.",
-          "Food insecurity can result from prioritizing rent over food, transportation issues, and lack of resources. (2)",
-          "Food insecurity has been on the rise since the Covid-19 pandemic. (3)",
-          "It can affect academic performance, health, and overall well-being.",
+          "I'm not too sure what to put in this section",
+          "Something about the larger Ram Pantry on campus.",
+          "Words words words Words words words Words words words",
+          "Words words words Words words words Words words words",
         ],
         titlePosition: "right",
       },
@@ -212,7 +212,7 @@ function LandingPage({ schoolConfig }: { schoolConfig: SchoolConfig }) {
           alt='35% of 100 visualized'
         />
         <p className='text-lg max-w-prose'>
-          According to our research, over 35% of the VCU student body faces some form of food insecurity, highlighting a significant and often overlooked issue within our academic community. This staggering statistic shows the critical need for accessible food resources on campus. Food insecurity can lead to detrimental effects on students' academic performance, mental health, and overall well-being. By addressing this issue head-on, initiatives like the Little Ram Pantries not only provide essential nourishment but also support students in achieving their educational goals and maintaining a healthier, more balanced lifestyle. (4, 5)
+          According to our research, over 35% of the VCU student body faces some form of food insecurity, highlighting a significant and often overlooked issue within our academic community. This staggering statistic shows the critical need for accessible food resources on campus. Food insecurity can lead to detrimental effects on students' academic performance, mental health, and overall well-being. By addressing this issue head-on, initiatives like the Little Ram Pantries not only provide essential nourishment but also support students in achieving their educational goals and maintaining a healthier, more balanced lifestyle.
         </p>
       </div>
 
