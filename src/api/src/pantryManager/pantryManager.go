@@ -17,24 +17,24 @@ type Pantry struct {
 	SortKey           string  `json:"sortKey"`
 	Campus            *string `json:"campus,omitempty"`
 	Directions        *string `json:"directions,omitempty"`
-	LatestContentsURL *string `json:"latest_contents_url,omitempty"`
 	Facility          *string `json:"facility,omitempty"`
-	PantryExteriorURL *string `json:"pantry_exterior_url,omitempty"`
-	Name              *string `json:"name,omitempty"`
 	Floor             *string `json:"floor,omitempty"`
 	Hours             *string `json:"hours,omitempty"`
+	LatestContentsURL *string `json:"latest_contents_url,omitempty"`
+	Name              *string `json:"name,omitempty"`
+	PantryExteriorURL *string `json:"pantry_exterior_url,omitempty"`
 }
 
 // PantryUpdate is Used for PUT request
 type PantryUpdate struct {
 	Campus            *string `json:"campus,omitempty"`
 	Directions        *string `json:"directions,omitempty"`
-	LatestContentsURL *string `json:"latest_contents_url,omitempty"`
 	Facility          *string `json:"facility,omitempty"`
-	PantryExteriorURL *string `json:"pantry_exterior_url,omitempty"`
-	Name              *string `json:"name,omitempty"`
 	Floor             *string `json:"floor,omitempty"`
 	Hours             *string `json:"hours,omitempty"`
+	LatestContentsURL *string `json:"latest_contents_url,omitempty"`
+	Name              *string `json:"name,omitempty"`
+	PantryExteriorURL *string `json:"pantry_exterior_url,omitempty"`
 }
 
 // DynamoDBClient initializes a DynamoDB client

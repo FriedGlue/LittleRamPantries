@@ -5,7 +5,15 @@
 /src/api/.env
 /src/frontend/client/.env.*
 /src/api/src/test
+/src/api/.aws-sam
 
 !*/.gitignore
 node_modules
 src/frontend/.env
+src/frontend/.env.example
+src/frontend/.env
+src/api/src/pantryManager/bootstrap
+src/api/src/imageLogger/bootstrap
+src/api/src/helloWorld/bootstrap
+src/api/src/adminDashboard/bootstrap
+src/raspberryPi/.env

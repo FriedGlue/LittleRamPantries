@@ -125,12 +125,19 @@ Resources:
       Architectures: [arm64]
       Policies:
         - AmazonDynamoDBFullAccess
+        - AmazonSQSFullAccess
       Events:
         GetTimeEvent:
           Type: Api
           Properties:
             RestApiId: !Ref MyApi
             Path: /admin/{startTime}/{endTime}
+            Method: GET
+        PollServiceBusEvent:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MyApi
+            Path: /admin/poll
             Method: GET
 
   HelloWorldFunction:
