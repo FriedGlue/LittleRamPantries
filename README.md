@@ -38,31 +38,30 @@ The positive impact of the web app includes:
 |---|---|
 | Documentation |  How to configure the project from scratch; high-level and low-level documentation available. |
 | src | Holds all the source code for the project. |
-| src/api | Holds all the backend code. |
-| src/api/helloWorld | Example code to test functionality and current status of the deployed project. |
-| src/api/imageLogger | Service used to log interactions with pantries, uses AI to analyze the contents. |
-| src/api/pantryManager | Service that performs CRUD operations the pantry database. |
-| src/raspberryPi | Holds all the code needed for a RaspberryPi to be deployed in the field. |
-| src/frontend| Holds all the frontend code for the application. |
-| src/frontend/client | The React user interface code. |
-| src/frontend/Templates | The YAML template files used to deploy the AWS infrastructure needed to host the code. |
+| src/api | Contains the code AWS Lambda functions and AWS templates to deploy the API. |
+| src/raspberryPi | Contains the code for the raspberry pis located inside the pantries. |
+| src/frontend| Holds the frontend code as well as the AWS templates to deploy the UI stack. |
 
 # To deploy this project, see `Documenation`
 
+## Continued Project Team
+- *Daniel Cranston* - *VCU CS Department* - Mentor/Faculty Advisor (CS)
+- *Josh Hayes* -  Fullstack developer 
+
 ## Continued Project Team, Summer 2024
-- *Daniel Cranston* - *CS Department* - Mentor/Faculty Advisor (CS)
-- *Jose Rosario* - *ECE* - Student Team Member - Hardware and Electronics
-- *Josh Hayes* - *CS* - Student Team Member - Fullstack developer 
-- *Nicholas Gacek* - *CS* - Student Team Member - IoT developer
+- *Daniel Cranston* - Mentor/Faculty Advisor (VCU Computer Science Department)
+- *Jose Rosario* - Hardware and Electronics
+- *Josh Hayes* - Fullstack developer 
+- *Nicholas Gacek* - IoT developer
 
 ## Original Project Team, Spring 2024, 
 
 ### Received Sternhiemer Award in Fall of 2023 and 3rd place for MULT department at Spring 2024 Capstone Expo
 
-- *Daniel Cranston* - *CS Department* - Mentor/Faculty Advisor (CS)
-- *Supriyo Bandyopadhyay* - *ECE Department* - Mentor/Faculty Advisor (ECE)
-- *David Hightower* - *ECE* - Student Team Member
-- *Jack Gurdin* - *CS* - Student Team Member
-- *Jose Rosario* - *ECE* - Student Team Member
-- *Josh Hayes* - *CS* - Student Team Member
-- *Nicholas Gacek* - *CS* - Student Team Member
+- *Daniel Cranston* - Mentor/Faculty Advisor (VCU Computer Science Department)
+- *Supriyo Bandyopadhyay* Mentor/Faculty Advisor (VCU Electrical Engineering Department)
+- *Jose Rosario* - Hardware and Electronics
+- *Josh Hayes* - Fullstack developer 
+- *Nicholas Gacek* - IoT developer
+- *David Hightower* - Hardware and Electronics
+- *Jack Gurdin* - Backend Developer
