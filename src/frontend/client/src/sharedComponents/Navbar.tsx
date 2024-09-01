@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 import LRPLogo from '../assets/ram-pantry.png';
-import { SchoolConfig } from '../types/types';
 import { useState } from 'react';
 
-function Navbar({ schoolConfig }: { schoolConfig: SchoolConfig }) {
+function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavbar = () => {
@@ -18,9 +17,8 @@ function Navbar({ schoolConfig }: { schoolConfig: SchoolConfig }) {
     'https://news.vcu.edu/article/2021/10/little-ram-pantries-will-provide-emergency-food-assistance-to-vcu-students';
 
   return (
-    <div style={{ backgroundColor: schoolConfig.footer_color }}>
       <nav
-        className={`sticky top-0 z-50 w-full h-20 border-b-2 border-black ${isOpen ? 'bg-white' : ''}`}
+        className={`sticky top-0 z-50 w-full h-20 border-b-2 border-black bg-white`}
       >
         <div className="container mx-auto flex items-center p-4">
           <Link to="/" className="flex items-center" onClick={closeNavbar}>
@@ -78,7 +76,6 @@ function Navbar({ schoolConfig }: { schoolConfig: SchoolConfig }) {
           </div>
         </div>
       </nav>
-    </div>
   );
 }
 
