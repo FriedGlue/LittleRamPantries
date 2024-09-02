@@ -69,20 +69,59 @@ def upload_to_s3(bucket_name, s3_file_path, local_file_path, aws_access_key_id, 
 
 def capture_and_process_image(filename, env_vars, cap):
     """Capture, optimize, and upload an image asynchronously."""
+
+    timestamp = int(time.time())
+    filename = f"{filename}-{timestamp}.jpg"
+
+    # Attempt to capture an image from the camera
     ret, frame = cap.read()
+
     if ret:
-        local_path = f"local/{filename}"
-        cv.imwrite(local_path, frame)
-        logging.info("Image captured and written to file.")
+        for _ in range(5):  # Clear buffer by reading extra frames
+            cap.read()
+        ret, frame = cap.read()
 
-        # Optimize the image for web use
-        optimized_path = optimize_image_for_web(local_path, f"local/optimized/{filename}")
+        # Define the paths for saving the image
+        local_dir = "local"
+        optimized_dir = os.path.join(local_dir, "optimized")
 
-        # Upload the optimized image asynchronously
-        future = executor.submit(upload_to_s3, env_vars['bucket_name'], f"interior/{filename}", optimized_path,
-                                 env_vars['aws_access_key_id'], env_vars['aws_secret_access_key'])
+        # Ensure the directories exist
+        os.makedirs(local_dir, exist_ok=True)
+        os.makedirs(optimized_dir, exist_ok=True)
+
+        # Construct full paths
+        local_path = os.path.join(local_dir, filename)
+        optimized_path = os.path.join(optimized_dir, filename)
+
+        # Try to save the captured frame
+        if cv.imwrite(local_path, frame):
+            logging.info(f"Image captured and written to {local_path}.")
+
+            # Optimize the image for web use
+            try:
+                optimized_path = optimize_image_for_web(local_path, optimized_path)
+            except Exception as e:
+                logging.error(f"Image optimization failed: {e}")
+                return
+
+            # Upload the optimized image asynchronously
+            try:
+                future = executor.submit(
+                    upload_to_s3,
+                    env_vars['bucket_name'],
+                    f"interior/{filename}",
+                    optimized_path,
+                    env_vars['aws_access_key_id'],
+                    env_vars['aws_secret_access_key']
+                )
+                logging.info(f"Upload task submitted for {optimized_path}.")
+            except Exception as e:
+                logging.error(f"Failed to submit upload task: {e}")
+        else:
+            logging.error(f"Failed to write image to {local_path}.")
     else:
         logging.error("Failed to capture image.")
+
 
 def main():
     """Main loop to monitor GPIO and handle image capture and upload."""
@@ -90,9 +129,11 @@ def main():
     setup_gpio()
     last_sensor_reading = GPIO.input(MAGNETPIN)
     led_status = False
+    print("program started")
 
     # Initialize the camera once at the beginning
     cap = cv.VideoCapture(0)
+    cap.set(cv.CAP_PROP_FPS, 30)  # Set frames per second if necessary
 
     try:
         while True:
@@ -104,8 +145,10 @@ def main():
             if current_sensor_reading != last_sensor_reading:
                 if current_sensor_reading == GPIO.HIGH:
                     logging.info("Door opening.")
+                    print("Door opening.")
                 else:
                     logging.info("Door closing.")
+                    print("Door closing.")
                     capture_and_process_image(env_vars['image_filename'], env_vars, cap)
                 last_sensor_reading = current_sensor_reading
     except KeyboardInterrupt:
