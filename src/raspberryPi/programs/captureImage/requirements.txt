@@ -5,8 +5,7 @@ charset-normalizer==3.3.2
 idna==3.8
 jmespath==1.0.1
 numpy==1.26.4
-opencv-python==4.9.0.80
-pillow==10.4.0
+opencv-python-headless==4.9.0.80
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 requests==2.32.3

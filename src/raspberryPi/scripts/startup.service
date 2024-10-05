@@ -1,0 +1,17 @@
+[Unit]
+Description=ServiceBus Python Program
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/scripts
+ExecStart=/home/pi/scripts/startup.sh
+Restart=on-failure
+StandardOutput=journal
+StandardError=journal
+Environment="PYTHONUNBUFFERED=1"
+
+[Install]
+WantedBy=multi-user.target

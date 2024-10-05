@@ -5,13 +5,11 @@ FROM python:3.11-slim
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
 
-# Install system dependencies (e.g., for OpenCV and GPIO on Raspberry Pi)
+# Install gcc and other necessary build tools
 RUN apt-get update && apt-get install -y \
-    libopencv-dev \
-    python3-opencv \
-    python3-rpi.gpio \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    gcc \
+    build-essential \
+    && apt-get clean
 
 # Set the working directory inside the container
 WORKDIR /app
